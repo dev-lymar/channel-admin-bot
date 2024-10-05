@@ -6,7 +6,7 @@ router = Router()
 
 
 @router.callback_query(F.data == "main_menu")
-async def admin_panel_main_menu_callback(callback: types.CallbackQuery):
+async def admin_panel_main_menu_callback(callback: types.CallbackQuery) -> None:
     await callback.message.delete()
 
     await callback.message.answer(text="Вы находитесь в главном меню",

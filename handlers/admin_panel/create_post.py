@@ -6,7 +6,7 @@ router = Router()
 
 
 @router.callback_query(F.data == "create_post")
-async def admin_panel_create_post_callback(callback: types.CallbackQuery):
+async def admin_panel_create_post_callback(callback: types.CallbackQuery) -> None:
     await callback.message.delete()
 
     await callback.message.answer(text="Можно будет создавать пост",
