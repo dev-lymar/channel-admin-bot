@@ -1,4 +1,5 @@
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.storage.memory import MemoryStorage
 from dotenv import dotenv_values
 import logging
 
@@ -9,4 +10,4 @@ ADMIN = config["ADMIN_ID"]
 logging.basicConfig(level=logging.INFO)
 
 bot = Bot(API_TOKEN)
-dp = Dispatcher()
+dp = Dispatcher(storage=MemoryStorage())
