@@ -6,6 +6,7 @@ import logging
 config = dotenv_values("./config/.env")
 API_TOKEN = config["API_TOKEN"]
 ADMIN = config["ADMIN_ID"]
+DB_URL = config["DB_URL"]
 
 logging.basicConfig(level=logging.INFO)
 
