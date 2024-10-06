@@ -3,7 +3,6 @@ import datetime
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
 
-from config.bot_config import CHAT_ID, bot
 from db.db_handler.create_post.check_username import check_db_user_name
 from db.db_handler.create_post.create_post import create_post
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
@@ -88,10 +87,6 @@ async def post_tag(message: types.Message, state: FSMContext):
                                        f"Время создания: {create_time}\n\n"
                                        f"Вы успешно создали пост!",
                                reply_markup=await admin_panel_keyboard_back_to_main_menu())
-    await bot.send_photo(CHAT_ID,
-                         photo=current_post_image,
-                         caption=f"{current_post_name}\n\n"
-                                 f"{current_post_description}")
 
 
 def register_create_post_handlers(dp) -> None:

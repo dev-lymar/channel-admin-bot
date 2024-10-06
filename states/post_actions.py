@@ -18,3 +18,7 @@ class Change_post(StatesGroup):
 
 class Delete_post(StatesGroup):
     post_id = State()
+
+
+class Publish_post(StatesGroup):
+    post_id = State()

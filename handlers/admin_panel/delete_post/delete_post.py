@@ -1,11 +1,7 @@
-import datetime
-
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
 
-from config.bot_config import CHAT_ID, bot
 from db.db_handler.change_post.get_post_name import get_post_name
-from db.db_handler.create_post.check_username import check_db_user_name
 from db.db_handler.delete_post.delete_post import delete_post
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
 from states.post_actions import Delete_post

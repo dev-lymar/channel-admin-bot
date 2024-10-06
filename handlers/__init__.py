@@ -5,12 +5,14 @@ from handlers.admin_panel.create_user_role import create_user_role
 from handlers.admin_panel.create_user_role.admin import admin, contenr_manager
 from handlers.admin_panel.delete_post import delete_post
 from handlers.admin_panel.delete_user_role import delete_user_role
+from handlers.admin_panel.publish_post import publish_post
 from handlers.start import start
 
 
 def register_routers(dp) -> None:
     start.register_start_command(dp)
     create_post.register_create_post_handlers(dp)
+    publish_post.register_publish_post_handlers(dp)
     get_post.register_change_post_handlers(dp)
     delete_post.register_delete_post_handlers(dp)
     main_menu.register_main_menu_handlers(dp)
