@@ -13,5 +13,5 @@ async def admin_panel_delete_post_callback(callback: types.CallbackQuery) -> Non
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
-def register_delete_post_callback(dp) -> None:
+def register_delete_post_handlers(dp) -> None:
     dp.include_router(router)

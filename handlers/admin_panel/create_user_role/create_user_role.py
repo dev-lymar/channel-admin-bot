@@ -13,5 +13,5 @@ async def admin_panel_create_user_role_callback(callback: types.CallbackQuery) -
                                   reply_markup=await admin_panel_keyboard_take_user_role())
 
 
-def register_create_user_role_callback(dp) -> None:
+def register_create_user_role_handlers(dp) -> None:
     dp.include_router(router)

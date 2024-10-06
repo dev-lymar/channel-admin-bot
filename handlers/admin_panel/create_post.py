@@ -13,5 +13,5 @@ async def admin_panel_create_post_callback(callback: types.CallbackQuery) -> Non
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
-def register_create_post_callback(dp) -> None:
+def register_create_post_handlers(dp) -> None:
     dp.include_router(router)

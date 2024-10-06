@@ -13,5 +13,5 @@ async def admin_panel_main_menu_callback(callback: types.CallbackQuery) -> None:
                                   reply_markup=await admin_panel_keyboard_main_menu())
 
 
-def register_main_menu_callback(dp) -> None:
+def register_main_menu_handlers(dp) -> None:
     dp.include_router(router)

@@ -2,6 +2,8 @@ from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
 from states.create_user_role import Create_user_role_admin
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
+from db.db_handler.user_role.create_admin import create_admin
+from db.db_handler.user_role.check_user_role import check_db_user_role
 
 router = Router()
 
@@ -17,30 +19,69 @@ async def load_user_role_admin_callback(callback: types.CallbackQuery, state=FSM
 
 @router.message(Create_user_role_admin.user_id)
 async def load_user_id(message: types.Message, state: FSMContext) -> None:
-    await state.update_data(user_id=message.text)
-    data = await state.get_data()
-    user_id = data.get('user_id')
-
     try:
-        int_user_id = int(user_id)
+        check = await check_db_user_role(user_id=int(message.text))
 
-        if int_user_id < 0:
+        if check == "admin":
             await state.clear()
-            await message.answer(f"ID пользователя не может быть отрицательным!\n"
-                                 f"Вы ввели следующий ID: {user_id}"
-                                 f"Попробуйте еще раз.",
+            await message.answer(f"Данный пользователь уже есть в базе данных!\n"
+                                 f"Его роль - Администратор\n"
+                                 f"ID пользователя: {message.text}\n"
+                                 f"Попробуйте еще раз.\n",
+                                 reply_markup=await admin_panel_keyboard_back_to_main_menu())
+
+        elif check == "content_manager":
+            await state.clear()
+            await message.answer(f"Данный пользователь уже есть в базе данных!\n"
+                                 f"Его роль - Контент-менеджер\n"
+                                 f"ID пользователя: {message.text}\n"
+                                 f"Попробуйте еще раз.\n",
                                  reply_markup=await admin_panel_keyboard_back_to_main_menu())
         else:
-            await state.clear()
-            await message.answer(f"Администратор с ID {user_id} успешно добавлен!",
-                                 reply_markup=await admin_panel_keyboard_back_to_main_menu())
+            await state.update_data(user_id=message.text)
+            data = await state.get_data()
+            user_id = int(data.get('user_id'))
+            if user_id < 0:
+                await state.clear()
+                await message.answer(f"ID пользователя не может быть отрицательным!\n"
+                                     f"Вы ввели следующий ID: {user_id}\n"
+                                     f"Попробуйте еще раз.\n",
+                                     reply_markup=await admin_panel_keyboard_back_to_main_menu())
+            else:
+                await state.set_state(Create_user_role_admin.username)
+                await message.answer(f"Администратор\n"
+                                     f"Вы ввели следующий ID: {user_id}\n"
+                                     f"Отправьте имя пользователя",
+                                     reply_markup=await admin_panel_keyboard_back_to_main_menu())
     except ValueError:
         await state.clear()
         await message.answer(f"ID пользователя должно содержать только цифры!\n"
-                             f"Вы ввели следующий ID: {user_id}"
-                             f"Попробуйте еще раз.",
+                             f"Вы ввели следующий ID: {message.text}\n"
+                             f"Попробуйте еще раз.\n",
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
-def register_load_user_role_admin_callback(dp) -> None:
+@router.message(Create_user_role_admin.username)
+async def load_username(message: types.Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    int_data_user_id = int(data.get('user_id'))
+    res = message.text.isdigit()
+
+    if res:
+        await state.clear()
+        await message.answer(f"Вы прислали не строку!\n"
+                             f"ID пользователя: {int_data_user_id}\n"
+                             f"Попробуйте еще раз.\n",
+                             reply_markup=await admin_panel_keyboard_back_to_main_menu())
+    else:
+        await state.update_data(username=message.text)
+        await create_admin(user_id=int_data_user_id, username=message.text)
+        await message.answer(f"Администратор успешно добавлен!\n"
+                             f"ID пользователя: {int_data_user_id}\n"
+                             f"Имя пользователя: {message.text}\n",
+                             reply_markup=await admin_panel_keyboard_back_to_main_menu())
+        await state.clear()
+
+
+def register_load_user_role_admin_handlers(dp) -> None:
     dp.include_router(router)
