@@ -6,5 +6,11 @@ class Create_post(StatesGroup):
     post_description = State()
     post_image = State()
     post_tag = State()
-    create_date = State()
-    create_time = State()
+
+
+class Change_post(StatesGroup):
+    post_id = State()
+    post_name = State()
+    post_description = State()
+    post_image = State()
+    post_tag = State()

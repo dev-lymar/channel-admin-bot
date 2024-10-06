@@ -32,6 +32,9 @@ class Post(Base):
     user_name: Mapped[str] = mapped_column()
     create_date: Mapped[str] = mapped_column()
     create_time: Mapped[str] = mapped_column()
+    change_user_name: Mapped[str] = mapped_column()
+    change_date: Mapped[str] = mapped_column()
+    change_time: Mapped[str] = mapped_column()
 
 
 async def async_main():

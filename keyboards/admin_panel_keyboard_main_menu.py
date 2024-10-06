@@ -7,6 +7,7 @@ async def admin_panel_keyboard_main_menu() -> types.InlineKeyboardMarkup:
 
     builder.row(
         types.InlineKeyboardButton(text="Создать пост", callback_data="create_post"),
+        types.InlineKeyboardButton(text="Редактировать пост", callback_data="change_post"),
         types.InlineKeyboardButton(text="Удалить пост", callback_data="delete_post"),
     )
     builder.row(types.InlineKeyboardButton(text="Назначить роль пользователю", callback_data="make_user_role"))
