@@ -22,3 +22,7 @@ class Delete_post(StatesGroup):
 
 class Publish_post(StatesGroup):
     post_id = State()
+
+
+class Check_post(StatesGroup):
+    post_id = State()
