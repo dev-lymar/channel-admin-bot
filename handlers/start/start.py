@@ -1,8 +1,9 @@
-from aiogram import types, Router
+from aiogram import Router, types
 from aiogram.filters import CommandStart
-from keyboards.admin_panel_keyboard_main_menu import admin_panel_keyboard_main_menu
-from db.db_handler.user_role.check_user_role import check_db_user_role
 
+from db.db_handler.user_role.check_user_role import check_db_user_role
+from keyboards.admin_panel_keyboard_main_menu import admin_panel_keyboard_main_menu
+from keyboards.content_manager_keyboard_main_menu import content_manager_panel_keyboard_main_menu
 
 router = Router()
 
@@ -15,6 +16,9 @@ async def start_command(message: types.Message) -> None:
     if check_user_role == 'admin':
         await message.answer(text="Вы вошли как админ",
                              reply_markup=await admin_panel_keyboard_main_menu())
+    elif check_user_role == 'content_manager':
+        await message.answer(text="Вы вошли как контент-менеджер",
+                             reply_markup=await content_manager_panel_keyboard_main_menu())
     else:
         await message.answer("Вы не админ!")
 
