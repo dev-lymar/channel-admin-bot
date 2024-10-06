@@ -1,6 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
-from states.create_user_role import Delete_role_from_user
+from states.user_role_actions import Delete_role_from_user
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
 from db.db_handler.user_role.delete_user_role import delete_user_role
 from db.db_handler.user_role.check_user_role import check_db_user_role

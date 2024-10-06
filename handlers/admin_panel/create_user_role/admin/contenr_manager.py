@@ -1,6 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
-from states.create_user_role import Create_user_role_content_manager
+from states.user_role_actions import Create_user_role_content_manager
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
 from db.db_handler.user_role.create_content_manager import create_content_manager
 from db.db_handler.user_role.check_user_role import check_db_user_role
@@ -48,7 +48,7 @@ async def load_user_id(message: types.Message, state: FSMContext) -> None:
                                      f"Попробуйте еще раз.\n",
                                      reply_markup=await admin_panel_keyboard_back_to_main_menu())
             else:
-                await state.set_state(Create_user_role_content_manager.username)
+                await state.set_state(Create_user_role_content_manager.user_name)
                 await message.answer(f"Контент-менеджер\n"
                                      f"Вы ввели следующий ID: {user_id}\n"
                                      f"Отправьте имя пользователя",
@@ -61,8 +61,8 @@ async def load_user_id(message: types.Message, state: FSMContext) -> None:
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
-@router.message(Create_user_role_content_manager.username)
-async def load_username(message: types.Message, state: FSMContext) -> None:
+@router.message(Create_user_role_content_manager.user_name)
+async def load_user_name(message: types.Message, state: FSMContext) -> None:
     data = await state.get_data()
     int_data_user_id = int(data.get('user_id'))
     res = message.text.isdigit()
@@ -74,8 +74,8 @@ async def load_username(message: types.Message, state: FSMContext) -> None:
                              f"Попробуйте еще раз.\n",
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
     else:
-        await state.update_data(username=message.text)
-        await create_content_manager(user_id=int_data_user_id, username=message.text)
+        await state.update_data(user_name=message.text)
+        await create_content_manager(user_id=int_data_user_id, user_name=message.text)
         await message.answer(f"Контент-менеджер успешно добавлен!\n"
                              f"ID пользователя: {int_data_user_id}\n"
                              f"Имя пользователя: {message.text}\n",

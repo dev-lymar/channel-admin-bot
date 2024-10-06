@@ -1,0 +1,12 @@
+from db.models.models import User, async_session
+from sqlalchemy import select
+
+
+async def check_db_user_name(user_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(User.user_name).where(User.user_id == user_id))
+
+        if result is None:
+            return None
+        else:
+            return result

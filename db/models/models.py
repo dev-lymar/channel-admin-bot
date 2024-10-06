@@ -21,6 +21,19 @@ class User(Base):
     user_name: Mapped[str] = mapped_column()
 
 
+class Post(Base):
+    __tablename__ = "posts"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    post_name: Mapped[str] = mapped_column()
+    post_description: Mapped[str] = mapped_column()
+    post_image: Mapped[str] = mapped_column()
+    post_tag: Mapped[str] = mapped_column()
+    user_name: Mapped[str] = mapped_column()
+    create_date: Mapped[str] = mapped_column()
+    create_time: Mapped[str] = mapped_column()
+
+
 async def async_main():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
