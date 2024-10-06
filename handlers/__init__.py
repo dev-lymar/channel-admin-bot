@@ -1,8 +1,9 @@
-from handlers.admin_panel import delete_post, main_menu
+from handlers.admin_panel import main_menu
 from handlers.admin_panel.change_post import get_post
 from handlers.admin_panel.create_post import create_post
 from handlers.admin_panel.create_user_role import create_user_role
 from handlers.admin_panel.create_user_role.admin import admin, contenr_manager
+from handlers.admin_panel.delete_post import delete_post
 from handlers.admin_panel.delete_user_role import delete_user_role
 from handlers.start import start
 

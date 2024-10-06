@@ -14,3 +14,7 @@ class Change_post(StatesGroup):
     post_description = State()
     post_image = State()
     post_tag = State()
+
+
+class Delete_post(StatesGroup):
+    post_id = State()
