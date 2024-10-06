@@ -1,16 +1,23 @@
 from aiogram import types, Router, F
+from aiogram.fsm.context import FSMContext
 from keyboards.admin_panel_keyboard_main_menu import admin_panel_keyboard_main_menu
 
 
 router = Router()
 
 
-@router.callback_query(F.data == "main_menu")
-async def admin_panel_main_menu_callback(callback: types.CallbackQuery) -> None:
-    await callback.message.delete()
+@router.callback_query(F.data == "main_menu", state="*")
+async def admin_panel_main_menu_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    curr_state = await state.get_state()
 
-    await callback.message.answer(text="Вы находитесь в главном меню",
-                                  reply_markup=await admin_panel_keyboard_main_menu())
+    if curr_state is None:
+        await callback.message.answer(text="Вы находитесь в главном меню",
+                                      reply_markup=await admin_panel_keyboard_main_menu())
+    elif curr_state is not None:
+        await state.clear()
+        await callback.message.delete()
+        await callback.message.answer(text="Вы находитесь в главном меню",
+                                      reply_markup=await admin_panel_keyboard_main_menu())
 
 
 def register_main_menu_handlers(dp) -> None:
