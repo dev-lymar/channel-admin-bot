@@ -1,6 +1,7 @@
 from aiogram import Router, types
 from aiogram.filters import CommandStart
 
+from config.bot_config import ADMIN
 from db.db_handler.user_role.check_user_role import check_db_user_role
 from keyboards.admin_panel_keyboard_main_menu import admin_panel_keyboard_main_menu
 from keyboards.content_manager_keyboard_main_menu import content_manager_panel_keyboard_main_menu
@@ -13,7 +14,7 @@ async def start_command(message: types.Message) -> None:
     user_id = int(message.from_user.id)
     check_user_role = await check_db_user_role(user_id=user_id)
 
-    if check_user_role == 'admin':
+    if check_user_role == 'admin' or user_id == ADMIN:
         await message.answer(text="Вы вошли как админ",
                              reply_markup=await admin_panel_keyboard_main_menu())
     elif check_user_role == 'content_manager':
