@@ -7,8 +7,11 @@
 [![Ruff](https://img.shields.io/badge/Babel-2.16-F9DC3E?style=flat&logo=babel&logoColor=white)](https://github.com/astral-sh/ruff)
 [![Flake8](https://img.shields.io/badge/flake8-checked-blueviolet?style=flat)](https://flake8.pycqa.org/en/latest/)
 
-**Admin Bot** — is a simple Telegram bot designed for managing content and users in a Telegram channel. 
-The project is built using Python 3.12.2, leveraging `aiogram`, `asyncpg`, `Babel`, and `SQLAlchemy` for interacting with a `PostgreSQL` database.
+**Admin Bot** —  is a simple and user-friendly Telegram bot designed for efficient management of content and users within a Telegram channel.
+The project is built using Python 3.12.2, leveraging `aiogram` for seamless interaction with the Telegram API, 
+`asyncpg` for efficient asynchronous database operations, `Babel` for easy localization, 
+and `SQLAlchemy` for robust database modeling with `PostgreSQL`. 
+This combination ensures high performance, scalability, and ease of use for administrators and content managers.
 
 ![Admin Bot](./img/image.png)
 
@@ -24,9 +27,14 @@ The project is built using Python 3.12.2, leveraging `aiogram`, `asyncpg`, `Babe
  - [Author 👤](#Author)
 
 ## Key Features:
-- Post management: view, create, edit, and delete posts.
-- Publish posts to a channel.
-- Assign and remove user roles: administrator, content manager.
+- **Post Management:** *View, create, edit, and delete posts.*
+  - Administrators can maintain full control over content, ensuring that all posts meet the desired standards before publication
+- **Publish to Channel:** *Publish posts directly to a Telegram channel.*
+  - Content managers can quickly share updates or announcements with their audience, streamlining communication.
+- **User Roles:** *Assign and manage roles like administrator or content manager.*
+  - Manage permissions directly through the bot, ensuring that access to functions is given only to authorized users.
+- **Localization:** *Supports English and Russian (en/ru).*
+  - Ready to expand to additional languages, offering flexibility for different user bases and international audiences.
 
 ## Installation and Setup
 **Requirements:**
@@ -136,9 +144,9 @@ If you enjoyed the project, please give a star ⭐️ on the [repository](https:
 If you have any questions or suggestions, feel free to reach out:
 
 <a href="https://t.me/vlymar">
-<img src="https://img.shields.io/badge/-Telegram-26A5E4?style=flat&logo=telegram&logoColor=white"/>
+<img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/>
 </a>
 <a href="mailto:lymarvolodymyr1@gmail.com">
-<img src="https://img.shields.io/badge/-Gmail-EA4335?style=flat&logo=gmail&logoColor=white"/>
+<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 
