@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-10 20:01+0200\n"
+"PO-Revision-Date: 2024-10-10 20:06+0200\n"
+"Last-Translator: \n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.16.0\n"
+"X-Generator: Poedit 3.5\n"
+
+#: handlers/admin_panel/main_menu.py:21 handlers/admin_panel/main_menu.py:26
+#: handlers/admin_panel/main_menu.py:30 handlers/admin_panel/main_menu.py:35
+msgid "main_menu.welcome.message"
+msgstr ""
+"You are in the main menu 📦\n"
+"<I>Select an action below:</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:21
+#: handlers/admin_panel/check_post/check_post.py:38
+#: handlers/admin_panel/delete_post/delete_post.py:18
+#: handlers/admin_panel/publish_post/publish_post.py:18
+msgid "post.get_from_user.post_id"
+msgstr "🆔 Please enter the post ID:"
+
+#: handlers/admin_panel/change_post/get_post.py:31
+msgid "post.edit.new_title"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ Current title: {post_title}\n"
+"\n"
+"<I>Enter the new title:</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:36
+#: handlers/admin_panel/check_post/check_post.py:57
+#: handlers/admin_panel/delete_post/delete_post.py:36
+#: handlers/admin_panel/publish_post/publish_post.py:41
+msgid "post.error.id_not_found"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"⚠️ <b>Error:</b> No post found with this ID!\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:47
+msgid "post.edit.new_description"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ New title: {post_title}\n"
+"\n"
+"<I>Enter the new post content:</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:60
+msgid "post.edit.new_tag"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ New title: {post_name}\n"
+"📔 New content: {post_description}\n"
+"\n"
+"<I>Enter a new tag:</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:75
+msgid "post.edit.new_image"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ New title: {post_name}\n"
+"📔 New content: {post_description}\n"
+"🏷️ New tag: #{post_tag}\n"
+"\n"
+"<I>Upload a new image for the post:</I>"
+
+#: handlers/admin_panel/change_post/get_post.py:108
+msgid "post.edit.successfully_edited_info"
+msgstr ""
+"<b>Updated post:</b>\n"
+"\n"
+"🎟️ Title: {post_name}\n"
+"📔 Content: {post_description}\n"
+"🏷️ Tag: #{post_tag}\n"
+"👤 Edited by: <b>{change_user_name}</b>\n"
+"📅 Date: <b>{change_date}</b>\n"
+"⏱️ Time: <b>{change_time}</b>\n"
+"\n"
+"✅ <b>Post successfully updated!</b>"
+
+#: handlers/admin_panel/check_post/check_post.py:18
+msgid "post.check.get_all_posts"
+msgstr ""
+"🆔 ID: {post_id}\n"
+"🎟️ Title: {post_name}\n"
+"🏷️ Tag: #{post_tag}"
+
+#: handlers/admin_panel/check_post/check_post.py:28
+msgid "post.check.no_found_posts"
+msgstr "⚠️ Posts not found."
+
+#: handlers/admin_panel/check_post/check_post.py:50
+msgid "post.check.post_content"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ Title: {post_name}\n"
+"📔 Content: {post_description}\n"
+"🏷️ Tag: #{post_tag}"
+
+#: handlers/admin_panel/create_post/create_post.py:20
+msgid "post.create.title"
+msgstr "<I>Enter the title for the post:</I>"
+
+#: handlers/admin_panel/create_post/create_post.py:28
+msgid "post.create.description"
+msgstr ""
+"🎟️ Title: {post_title}\n"
+"\n"
+"<I>Enter the content for the post:</I>"
+
+#: handlers/admin_panel/create_post/create_post.py:39
+msgid "post.create.image"
+msgstr ""
+"🎟️ Title: {post_title}\n"
+"📔 Content: {post_description}\n"
+"\n"
+"<I>Upload an image for the post:</I>"
+
+#: handlers/admin_panel/create_post/create_post.py:51
+msgid "create.post.tag"
+msgstr ""
+"🎟️ Title: {post_title}\n"
+"📔 Content: {post_description}\n"
+"\n"
+"<I>Enter a tag for the post:</I>"
+
+#: handlers/admin_panel/create_post/create_post.py:80
+msgid "create.post.successfully_created_info"
+msgstr ""
+"🎟️ Title: {post_title}\n"
+"📔 Content: {post_description}\n"
+"\n"
+"🏷️ Tag: #{post_tag}\n"
+"👤 Created by: <b>{post_creator}</b>\n"
+"📅 Date: <b>{post_date_creation}</b>\n"
+"⏱️ Time: <b>{post_time_creation}</b>\n"
+"\n"
+"✅ <b>Post successfully created!</b>"
+
+#: handlers/admin_panel/create_user_role/create_user_role.py:13
+msgid "user_role.role_selection"
+msgstr "🖋️ Who do you want to add?"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:18
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:18
+msgid "user_role.get_user_id"
+msgstr ""
+"🖋️ Role selected.\n"
+"\n"
+"<I>Enter the user’s ID you want to add:</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:29
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:29
+msgid "user_role.error.user_exists_as_admin"
+msgstr ""
+"⚠️ This user is already in the database!\n"
+"👤 Role: <b>Administrator</b>\n"
+"🆔 User ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:34
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:34
+msgid "user_role.error.user_exists_as_context_manager"
+msgstr ""
+"⚠️ This user is already in the database!\n"
+"👤 Role: <b>Content Manager</b>\n"
+"🆔 User ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:42
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:42
+msgid "user_role.error.negative_id"
+msgstr ""
+"⚠️ User ID cannot be negative!\n"
+"🆔 Entered ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:46
+msgid "user_role.create.get_admin_username"
+msgstr ""
+"👤 <b>Administrator</b>\n"
+"🆔 Entered ID: <b>{user_id}</b>\n"
+"\n"
+"<I>Enter the username:</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:50
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:50
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:40
+msgid "user_role.error.value_error"
+msgstr ""
+"⚠️ User ID must contain <b>only numbers</b>!\n"
+"🆔 Entered ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:62
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:61
+msgid "user_role.error.invalid_username"
+msgstr ""
+"⚠️ Username cannot be a number!\n"
+"🆔 User ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:67
+msgid "user_role.create.admin_role_successfully_created"
+msgstr ""
+"✅ <b>Administrator successfully added!</b>\n"
+"\n"
+"🆔 User ID: <b>{user_id}</b>\n"
+"👤 Username: <b>{user_username}</b>"
+
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:46
+msgid "user_role.create.get_context_manager_username"
+msgstr ""
+"👤 <b>Content Manager</b>\n"
+"🆔 Entered ID: <b>{user_id}</b>\n"
+"\n"
+"<I>Enter the username:</I>"
+
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:66
+msgid "user_role.create.context_manager_role_successfully_created"
+msgstr ""
+"✅ <b>Content Manager successfully added!</b>\n"
+"\n"
+"🆔 User ID: <b>{user_id}</b>\n"
+"👤 Username: <b>{user_username}</b>"
+
+#: handlers/admin_panel/delete_post/delete_post.py:31
+msgid "post.delete.successfully_deleted"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ Title: <b>{post_name}</b>\n"
+"\n"
+"☑️ <b>Post successfully deleted!</b>"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:18
+msgid "user_role.delete.get_user_id"
+msgstr ""
+"❌ Who do you want to remove?\n"
+"\n"
+"🆔 Enter the user ID:"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:30
+msgid "user_role.error.id_not_found"
+msgstr ""
+"⚠️ No user found with this ID!\n"
+"🆔 Entered ID: <b>{message.text}</b>\n"
+"\n"
+"🔄 <I>Please try again.</I>"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:34
+msgid "user_role.delete.successfully_deleted"
+msgstr ""
+"☑️ <b>User successfully removed!</b>\n"
+"\n"
+"🆔 User ID: <b>{user_id}</b>"
+
+#: handlers/admin_panel/publish_post/publish_post.py:34
+msgid "post.publish.successfully_published"
+msgstr ""
+"🆔 Post ID: {post_id}\n"
+"🎟️ Title: {post_name}\n"
+"📔 Content: {post_description}\n"
+"\n"
+"✅ <b>Post successfully published!</b>"
+
+#: handlers/start/start.py:19
+msgid "start.admin.message"
+msgstr ""
+"👤 You are logged in as <b>Administrator</b>\n"
+"🖲️ <I>Select an action below:</I>"
+
+#: handlers/start/start.py:22
+msgid "start.context_manager.message"
+msgstr ""
+"👤 You are logged in as <b>Content Manager</b>\n"
+"🖲️ <I>Select an action below:</I>"
+
+#: handlers/start/start.py:25
+msgid "start.denied_access.message"
+msgstr ""
+"⚠️ Sorry, you do not have access!\n"
+"🔗 <I>Please contact the administrator.</I>"
+
+#: keyboards/admin_panel_keyboard_back_to_main_menu.py:10
+msgid "kb.back_to_main_menu"
+msgstr "🔙 Back to main menu"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:9
+#: keyboards/content_manager_keyboard_main_menu.py:9
+msgid "kb.post.create"
+msgstr "➕ Create post"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:10
+#: keyboards/content_manager_keyboard_main_menu.py:10
+msgid "kb.post.edit"
+msgstr "✏️ Edit post"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:11
+#: keyboards/content_manager_keyboard_main_menu.py:11
+msgid "kb.post.delete"
+msgstr "❌ Delete post"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:12
+msgid "kb.post.get_all_posts"
+msgstr "🗂️ All posts"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:13
+#: keyboards/content_manager_keyboard_main_menu.py:12
+msgid "kb.post.publish"
+msgstr "📤 Publish post"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:14
+#: keyboards/content_manager_keyboard_main_menu.py:13
+msgid "kb.post.check"
+msgstr "🔍 View post"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:16
+msgid "kb.user_role.create"
+msgstr "👑 Add user role"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:17
+msgid "kb.user_role.delete"
+msgstr "🌂 Remove user role"
+
+#: keyboards/admin_panel_keyboard_take_user_role.py:10
+msgid "kb.select_admin_role"
+msgstr "👤 Administrator"
+
+#: keyboards/admin_panel_keyboard_take_user_role.py:11
+msgid "kb.select_context_manager_role"
+msgstr "📝 Content Manager"
