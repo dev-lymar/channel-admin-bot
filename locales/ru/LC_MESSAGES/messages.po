@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-10 14:23+0200\n"
-"PO-Revision-Date: 2024-10-10 15:36+0200\n"
+"POT-Creation-Date: 2024-10-10 20:01+0200\n"
+"PO-Revision-Date: 2024-10-10 20:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -28,7 +28,7 @@ msgstr ""
 "<i>Выберите нужное действие:</i>"
 
 #: handlers/admin_panel/change_post/get_post.py:21
-#: handlers/admin_panel/check_post/check_post.py:17
+#: handlers/admin_panel/check_post/check_post.py:38
 #: handlers/admin_panel/delete_post/delete_post.py:18
 #: handlers/admin_panel/publish_post/publish_post.py:18
 msgid "post.get_from_user.post_id"
@@ -43,7 +43,7 @@ msgstr ""
 "<i>Введите новый заголовок:</i>"
 
 #: handlers/admin_panel/change_post/get_post.py:36
-#: handlers/admin_panel/check_post/check_post.py:36
+#: handlers/admin_panel/check_post/check_post.py:57
 #: handlers/admin_panel/delete_post/delete_post.py:36
 #: handlers/admin_panel/publish_post/publish_post.py:41
 msgid "post.error.id_not_found"
@@ -94,7 +94,18 @@ msgstr ""
 "\n"
 "✅ <b>Пост успешно изменен!</b>"
 
-#: handlers/admin_panel/check_post/check_post.py:29
+#: handlers/admin_panel/check_post/check_post.py:18
+msgid "post.check.get_all_posts"
+msgstr ""
+"🆔 ID: {post_id}\n"
+"🎟️ Заголовок: {post_title}\n"
+"🏷️ Тег: #{post_tag}"
+
+#: handlers/admin_panel/check_post/check_post.py:28
+msgid "post.check.no_found_posts"
+msgstr "⚠️ Посты не найдены."
+
+#: handlers/admin_panel/check_post/check_post.py:50
 msgid "post.check.post_content"
 msgstr ""
 "🆔 ID поста: {post_id}\n"
@@ -311,20 +322,24 @@ msgid "kb.post.delete"
 msgstr "❌ Удалить пост"
 
 #: keyboards/admin_panel_keyboard_main_menu.py:12
+msgid "kb.post.get_all_posts"
+msgstr "🗂️ Все посты"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:13
 #: keyboards/content_manager_keyboard_main_menu.py:12
 msgid "kb.post.publish"
 msgstr "📤 Опубликовать пост"
 
-#: keyboards/admin_panel_keyboard_main_menu.py:13
+#: keyboards/admin_panel_keyboard_main_menu.py:14
 #: keyboards/content_manager_keyboard_main_menu.py:13
 msgid "kb.post.check"
 msgstr "🔍 Найти пост"
 
-#: keyboards/admin_panel_keyboard_main_menu.py:15
+#: keyboards/admin_panel_keyboard_main_menu.py:16
 msgid "kb.user_role.create"
 msgstr "👑 Добавить роль пользователю"
 
-#: keyboards/admin_panel_keyboard_main_menu.py:16
+#: keyboards/admin_panel_keyboard_main_menu.py:17
 msgid "kb.user_role.delete"
 msgstr "🌂 Удалить роль у пользователю"
 
