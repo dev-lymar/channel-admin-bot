@@ -1,0 +1,337 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-10 14:23+0200\n"
+"PO-Revision-Date: 2024-10-10 15:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: ru <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Generated-By: Babel 2.16.0\n"
+"X-Generator: Poedit 3.5\n"
+
+#: handlers/admin_panel/main_menu.py:21 handlers/admin_panel/main_menu.py:26
+#: handlers/admin_panel/main_menu.py:30 handlers/admin_panel/main_menu.py:35
+msgid "main_menu.welcome.message"
+msgstr ""
+"Вы находитесь в главном меню 📦\n"
+"<i>Выберите нужное действие:</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:21
+#: handlers/admin_panel/check_post/check_post.py:17
+#: handlers/admin_panel/delete_post/delete_post.py:18
+#: handlers/admin_panel/publish_post/publish_post.py:18
+msgid "post.get_from_user.post_id"
+msgstr "🆔 Пожалуйста, введите ID поста:"
+
+#: handlers/admin_panel/change_post/get_post.py:31
+msgid "post.edit.new_title"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Текущий заголовок: <b>{post_title}</b>\n"
+"\n"
+"<i>Введите новый заголовок:</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:36
+#: handlers/admin_panel/check_post/check_post.py:36
+#: handlers/admin_panel/delete_post/delete_post.py:36
+#: handlers/admin_panel/publish_post/publish_post.py:41
+msgid "post.error.id_not_found"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"⚠️ <b>Ошибка:</b> Пост с таким ID не найден!\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:47
+msgid "post.edit.new_description"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Новый заголовок: <b>{post_title}</b>\n"
+"\n"
+"<i>Введите новый текст поста:</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:60
+msgid "post.edit.new_tag"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Новый заголовок: <b>{post_name}</b>\n"
+"📔 Новый текст: <b>{post_description}</b>\n"
+"\n"
+"<i>Введите новый тег:</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:75
+msgid "post.edit.new_image"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Новый заголовок: <b>{post_name}</b>\n"
+"📔 Новый текст: <b>{post_description}</b>\n"
+"🏷️ Новый тег: <b>#{post_tag}</b>\n"
+"\n"
+"<i>Загрузите новое изображение поста:</i>"
+
+#: handlers/admin_panel/change_post/get_post.py:108
+msgid "post.edit.successfully_edited_info"
+msgstr ""
+"<b>Измененный пост:</b>\n"
+"\n"
+"🎟️ Заголовок: <b>{post_name}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"🏷️ Тег: <b>#{post_tag}</b>\n"
+"👤 Изменил: <b>{change_user_name}</b>\n"
+"📅 Дата: <b>{change_date}</b>\n"
+"⏱️ Время: <b>{change_time}</b>\n"
+"\n"
+"✅ <b>Пост успешно изменен!</b>"
+
+#: handlers/admin_panel/check_post/check_post.py:29
+msgid "post.check.post_content"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Заголовок: <b>{post_name}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"🏷️ Тег: <b>#{post_tag}</b>"
+
+#: handlers/admin_panel/create_post/create_post.py:20
+msgid "post.create.title"
+msgstr "<i>Введите название поста:</i>"
+
+#: handlers/admin_panel/create_post/create_post.py:28
+msgid "post.create.description"
+msgstr ""
+"🎟️ Заголовок: <b>{post_title}</b>\n"
+"\n"
+"<i>Введите текст поста:</i>"
+
+#: handlers/admin_panel/create_post/create_post.py:39
+msgid "post.create.image"
+msgstr ""
+"🎟️ Заголовок: <b>{post_title}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"\n"
+"<i>Загрузите изображение:</i>"
+
+#: handlers/admin_panel/create_post/create_post.py:51
+msgid "create.post.tag"
+msgstr ""
+"🎟️ Заголовок: <b>{post_title}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"\n"
+"<i>Введите тег:</i>"
+
+#: handlers/admin_panel/create_post/create_post.py:80
+msgid "create.post.successfully_created_info"
+msgstr ""
+"🎟️ Заголовок: <b>{post_title}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"\n"
+"🏷️ Тег: <b>#{post_tag}</b>\n"
+"👤 Создатель: <b>{post_creator}</b>\n"
+"📅 Дата: <b>{post_date_creation}</b>\n"
+"⏱️ Время: <b>{post_time_creation}</b>\n"
+"\n"
+"✅ <b>Пост успешно создан!</b>"
+
+#: handlers/admin_panel/create_user_role/create_user_role.py:13
+msgid "user_role.role_selection"
+msgstr "🖋️ Кого Вы хотите добавить ?"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:18
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:18
+msgid "user_role.get_user_id"
+msgstr ""
+"🖋️ Роль выбрана.\n"
+"\n"
+"<i>Введите ID пользователя, которого хотите добавить:</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:29
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:29
+msgid "user_role.error.user_exists_as_admin"
+msgstr ""
+"⚠️ Пользователь уже существует в базе!\n"
+"👤 Роль: <b>Администратор</b>\n"
+"🆔 ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:34
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:34
+msgid "user_role.error.user_exists_as_context_manager"
+msgstr ""
+"⚠️ Пользователь уже существует в базе!\n"
+"👤 Роль: <b>Контент-менеджер</b>\n"
+"🆔 ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:42
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:42
+msgid "user_role.error.negative_id"
+msgstr ""
+"⚠️ ID пользователя не может быть отрицательным!\n"
+"🆔 Введенный ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:46
+msgid "user_role.create.get_admin_username"
+msgstr ""
+"👤 <b>Администратор</b>\n"
+"🆔 Введенный ID: <b>{user_id}</b>\n"
+"\n"
+"<i>Введите имя пользователя:</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:50
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:50
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:40
+msgid "user_role.error.value_error"
+msgstr ""
+"⚠️ ID пользователя должно содержать <b>только цифры</b>!\n"
+"🆔 Введенный ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:62
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:61
+msgid "user_role.error.invalid_username"
+msgstr ""
+"⚠️ Имя пользователя не может быть числом!\n"
+"🆔 ID: <b>{user_id}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/create_user_role/admin/admin.py:67
+msgid "user_role.create.admin_role_successfully_created"
+msgstr ""
+"✅ <b>Администратор добавлен!</b>\n"
+"\n"
+"🆔 ID: <b>{user_id}</b>\n"
+"👤 Имя пользователя: <b>{user_username}</b>"
+
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:46
+msgid "user_role.create.get_context_manager_username"
+msgstr ""
+"👤 <b>Контент-менеджер</b>\n"
+"🆔 Введенный ID: <b>{user_id}</b>\n"
+"\n"
+"<i>Введите имя пользователя:</i>"
+
+#: handlers/admin_panel/create_user_role/admin/contenr_manager.py:66
+msgid "user_role.create.context_manager_role_successfully_created"
+msgstr ""
+"✅ <b>Контент-менеджер добавлен!</b>\n"
+"\n"
+"🆔 ID: <b>{user_id}</b>\n"
+"👤 Имя пользователя: <b>{user_username}</b>"
+
+#: handlers/admin_panel/delete_post/delete_post.py:31
+msgid "post.delete.successfully_deleted"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Заголовок: <b>{post_name}</b>\n"
+"\n"
+"☑️ <b>Пост удален!</b>"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:18
+msgid "user_role.delete.get_user_id"
+msgstr ""
+"❌ Кого вы хотите удалить?\n"
+"\n"
+"🆔 Введите ID пользователя:"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:30
+msgid "user_role.error.id_not_found"
+msgstr ""
+"⚠️ Пользователь с таким ID не найден в базе!\n"
+"🆔 Введенный ID: <b>{message.text}</b>\n"
+"\n"
+"🔄 <i>Попробуйте снова.</i>"
+
+#: handlers/admin_panel/delete_user_role/delete_user_role.py:34
+msgid "user_role.delete.successfully_deleted"
+msgstr ""
+"☑️ <b>Пользователь удален!</b>\n"
+"\n"
+"🆔 ID: <b>{user_id}</b>"
+
+#: handlers/admin_panel/publish_post/publish_post.py:34
+msgid "post.publish.successfully_published"
+msgstr ""
+"🆔 ID поста: {post_id}\n"
+"🎟️ Заголовок: <b>{post_name}</b>\n"
+"📔 Текст: <b>{post_description}</b>\n"
+"\n"
+"✅ <b>Пост опубликован!</b>"
+
+#: handlers/start/start.py:19
+msgid "start.admin.message"
+msgstr ""
+"👤 Вы вошли как <b>Администратор</b> \n"
+"🖲️ <i>Выберите нужное действие:</i>"
+
+#: handlers/start/start.py:22
+msgid "start.context_manager.message"
+msgstr ""
+"👤 Вы вошли как <b>Контент-менеджер</b>\n"
+"🖲️ <i>Выберите нужное действие:</i>"
+
+#: handlers/start/start.py:25
+msgid "start.denied_access.message"
+msgstr ""
+"⚠️ У вас нет доступа!\n"
+"🔗 <i>Обратитесь к администратору.</i>"
+
+#: keyboards/admin_panel_keyboard_back_to_main_menu.py:10
+msgid "kb.back_to_main_menu"
+msgstr "🔙 Вернутся в главное меню"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:9
+#: keyboards/content_manager_keyboard_main_menu.py:9
+msgid "kb.post.create"
+msgstr "➕ Создать пост"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:10
+#: keyboards/content_manager_keyboard_main_menu.py:10
+msgid "kb.post.edit"
+msgstr "✏️ Редактировать пост"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:11
+#: keyboards/content_manager_keyboard_main_menu.py:11
+msgid "kb.post.delete"
+msgstr "❌ Удалить пост"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:12
+#: keyboards/content_manager_keyboard_main_menu.py:12
+msgid "kb.post.publish"
+msgstr "📤 Опубликовать пост"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:13
+#: keyboards/content_manager_keyboard_main_menu.py:13
+msgid "kb.post.check"
+msgstr "🔍 Найти пост"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:15
+msgid "kb.user_role.create"
+msgstr "👑 Добавить роль пользователю"
+
+#: keyboards/admin_panel_keyboard_main_menu.py:16
+msgid "kb.user_role.delete"
+msgstr "🌂 Удалить роль у пользователю"
+
+#: keyboards/admin_panel_keyboard_take_user_role.py:10
+msgid "kb.select_admin_role"
+msgstr "👤 Администратор"
+
+#: keyboards/admin_panel_keyboard_take_user_role.py:11
+msgid "kb.select_context_manager_role"
+msgstr "📝 Контент-менеджер"
