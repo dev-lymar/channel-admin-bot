@@ -15,7 +15,7 @@ async def admin_panel_delete_post_callback(callback: types.CallbackQuery, state:
     await state.set_state(Delete_post.post_id)
     await callback.message.delete()
 
-    await callback.message.answer(text=_("post.delete.enter_id"),
+    await callback.message.answer(text=_("post.get_from_user.post_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 

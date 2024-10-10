@@ -1,5 +1,6 @@
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.i18n import gettext as _
 
 from db.db_handler.get_post.get_post import get_post
 from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
@@ -13,7 +14,7 @@ async def admin_panel_check_post_callback(callback: types.CallbackQuery, state: 
     await state.set_state(Check_post.post_id)
     await callback.message.delete()
 
-    await callback.message.answer(text="Укажите ID поста:",
+    await callback.message.answer(text=_("post.get_from_user.post_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -25,16 +26,14 @@ async def post_id(message: types.Message, state: FSMContext):
         await state.clear()
 
         await message.answer_photo(photo=row.post_image,
-                                   caption=f"ID поста: {message.text}\n"
-                                           f"Название поста: {post_name}\n\n"
-                                           f"Описание поста: {post_description}\n\n"
-                                           f"Тег поста: #{post_description}\n\n",
+                                   caption=_("post.check.post_content").format(post_id=message.text,
+                                                                               post_name=post_name,
+                                                                               post_description=post_description,
+                                                                               post_tag=post_tag),
                                    reply_markup=await admin_panel_keyboard_back_to_main_menu())
     except TypeError:
         await state.clear()
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Ошибка. Поста с таким ID нет в базе данных!\n"
-                                  "Попробуйте еще раз.",
+        await message.answer(text=_("post.error.id_not_found").format(post_id=message.text),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 

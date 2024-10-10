@@ -1,5 +1,6 @@
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.i18n import gettext as _
 
 from config.bot_config import CHAT_ID, bot
 from db.db_handler.get_post.get_post import get_post
@@ -14,7 +15,7 @@ async def admin_panel_publish_post_callback(callback: types.CallbackQuery, state
     await state.set_state(Publish_post.post_id)
     await callback.message.delete()
 
-    await callback.message.answer(text="Укажите ID поста:",
+    await callback.message.answer(text=_("post.get_from_user.post_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -22,7 +23,7 @@ async def admin_panel_publish_post_callback(callback: types.CallbackQuery, state
 async def post_id(message: types.Message, state: FSMContext):
     try:
         row = await get_post(int(message.text))
-        post_name, post_description, post_image = row
+        post_name, post_description, post_image, post_tag = row
         await state.clear()
 
         await bot.send_photo(chat_id=CHAT_ID,
@@ -30,16 +31,14 @@ async def post_id(message: types.Message, state: FSMContext):
                              caption=f"{post_name}\n\n"
                                      f"{post_description}")
         await message.answer_photo(photo=row.post_image,
-                                   caption=f"ID поста: {message.text}\n"
-                                           f"Название поста: {post_name}\n\n"
-                                           f"Описание поста: {post_description}\n\n"
-                                           "Пост опубликован!",
+                                   caption=_("post.publish.successfully_published").
+                                   format(post_id=message.text,
+                                          post_name=post_name,
+                                          post_description=post_description),
                                    reply_markup=await admin_panel_keyboard_back_to_main_menu())
     except TypeError:
         await state.clear()
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Ошибка. Поста с таким ID нет в базе данных!\n"
-                                  "Попробуйте еще раз.",
+        await message.answer(text=_("post.error.id_not_found").format(post_id=message.text),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
