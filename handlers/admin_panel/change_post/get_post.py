@@ -2,6 +2,7 @@ import datetime
 
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.i18n import gettext as _
 
 from db.db_handler.change_post.change_post import change_post
 from db.db_handler.change_post.get_post_name import get_post_name
@@ -17,7 +18,7 @@ async def admin_panel_change_post_callback(callback: types.CallbackQuery, state:
     await state.set_state(Change_post.post_id)
     await callback.message.delete()
 
-    await callback.message.answer(text="Укажите ID поста для изменения:",
+    await callback.message.answer(text=_("post.edit.enter_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -27,15 +28,12 @@ async def post_id(message: types.Message, state: FSMContext):
         row = await get_post_name(int(message.text))
         await state.update_data(post_id=message.text)
         await state.set_state(Change_post.post_name)
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Название поста: {row.post_name}\n\n"
-                                  "Укажите новое название поста:",
+        await message.answer(text=_("post.edit.new_title").format(post_id=message.text,
+                                                                  post_title=row.post_name),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
     except TypeError:
         await state.clear()
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Ошибка. Поста с таким ID нет в базе данных!\n"
-                                  "Попробуйте еще раз.",
+        await message.answer(text=_("post.error.id_not_found").format(post_id=message.text),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -46,9 +44,8 @@ async def post_name(message: types.Message, state: FSMContext):
     data = await state.get_data()
     data_post_id = data.get("post_id")
     data_post_name = data.get("post_name")
-    await message.answer(text=f"ID поста: {data_post_id}\n"
-                              f"Новое название поста: {data_post_name}\n\n"
-                              "Пришлите новое описание поста:",
+    await message.answer(text=_("post.edit.new_description").format(post_id=data_post_id,
+                                                                    post_title=data_post_name),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -60,10 +57,9 @@ async def post_description(message: types.Message, state: FSMContext):
     data_post_id = data.get("post_id")
     data_post_name = data.get("post_name")
     data_post_description = data.get("post_description")
-    await message.answer(text=f"ID поста: {data_post_id}\n"
-                              f"Новое название поста: {data_post_name}\n"
-                              f"Новое описание поста: {data_post_description}\n\n"
-                              "Пришлите новый тег:",
+    await message.answer(text=_("post.edit.new_tag").format(post_id=data_post_id,
+                                                            post_name=data_post_name,
+                                                            post_description=data_post_description),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -76,11 +72,10 @@ async def post_tag(message: types.Message, state: FSMContext):
     data_post_name = data.get("post_name")
     data_post_description = data.get("post_description")
     data_post_tag = data.get("post_tag")
-    await message.answer(text=f"ID поста: {data_post_id}\n"
-                              f"Новое название поста: {data_post_name}\n"
-                              f"Новое описание поста: {data_post_description}\n"
-                              f"Новый тег: {data_post_tag}\n\n"
-                              "Пришлите новое изображение поста:",
+    await message.answer(text=_("post.edit.new_image").format(post_id=data_post_id,
+                                                              post_name=data_post_name,
+                                                              post_description=data_post_description,
+                                                              post_tag=data_post_tag),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -90,7 +85,7 @@ async def post_image(message: types.Message, state: FSMContext):
     data = await state.get_data()
 
     user_id = int(message.from_user.id)
-    post_id = int(data.get("post_id"))
+    data_post_id = int(data.get("post_id"))
     new_post_name = str(data.get("post_name"))
     new_post_description = str(data.get("post_description"))
     new_post_image = str(data.get("post_image"))
@@ -100,7 +95,7 @@ async def post_image(message: types.Message, state: FSMContext):
     change_time = str(current_time.time().replace(microsecond=0))
     change_user_name = await check_db_user_name(user_id=user_id)
 
-    await change_post(post_id=post_id,
+    await change_post(post_id=data_post_id,
                       post_name=new_post_name,
                       post_description=new_post_description,
                       post_image=new_post_image,
@@ -110,13 +105,13 @@ async def post_image(message: types.Message, state: FSMContext):
                       change_time=change_time
                       )
     await message.answer_photo(photo=new_post_image,
-                               caption=f"Название поста: {new_post_name}\n"
-                                       f"Описание поста: {new_post_description}\n"
-                                       f"Тег поста: #{new_post_tag}\n"
-                                       f"Изменил: {change_user_name}\n"
-                                       f"Дата изменения: {change_date}\n"
-                                       f"Время изменения: {change_time}\n\n"
-                                       f"Пост успешно изменен!",
+                               caption=_("post.edit.successfully_edited_info").
+                               format(post_name=new_post_name,
+                                      post_description=new_post_description,
+                                      post_tag=new_post_tag,
+                                      change_user_name=change_user_name,
+                                      change_date=change_date,
+                                      change_time=change_time,),
                                reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 

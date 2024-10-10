@@ -2,6 +2,7 @@ import datetime
 
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.i18n import gettext as _
 
 from db.db_handler.create_post.check_username import check_db_user_name
 from db.db_handler.create_post.create_post import create_post
@@ -16,7 +17,7 @@ async def admin_panel_create_post_callback(callback: types.CallbackQuery, state:
     await state.set_state(Create_post.post_name)
     await callback.message.delete()
 
-    await callback.message.answer(text="Укажите название поста:",
+    await callback.message.answer(text=_("post.create.title"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -24,8 +25,7 @@ async def admin_panel_create_post_callback(callback: types.CallbackQuery, state:
 async def post_name(message: types.Message, state: FSMContext):
     await state.update_data(post_name=message.html_text)
     await state.set_state(Create_post.post_description)
-    await message.answer(text=f"Название поста: {message.html_text}\n\n"
-                              "Укажите описание поста:",
+    await message.answer(text=_("post.create.description").format(post_title=message.html_text),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -36,9 +36,8 @@ async def post_description(message: types.Message, state: FSMContext):
     data = await state.get_data()
     data_post_name = data.get("post_name")
     data_post_description = data.get("post_description")
-    await message.answer(text=f"Название поста: {data_post_name}\n"
-                              f"Описание поста: {data_post_description}\n\n"
-                              "Пришлите изображение:",
+    await message.answer(text=_("post.create.image").format(post_title=data_post_name,
+                                                            post_description=data_post_description),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -49,9 +48,8 @@ async def post_image(message: types.Message, state: FSMContext):
     data = await state.get_data()
     data_post_name = data.get("post_name")
     data_post_description = data.get("post_description")
-    await message.answer(text=f"Название поста: {data_post_name}\n"
-                              f"Описание поста: {data_post_description}\n\n"
-                              "Пришлите тег:",
+    await message.answer(text=_("create.post.tag").format(post_title=data_post_name,
+                                                          post_description=data_post_description),
                          reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -79,13 +77,13 @@ async def post_tag(message: types.Message, state: FSMContext):
                       create_time=create_time
                       )
     await message.answer_photo(photo=current_post_image,
-                               caption=f"Название поста: {current_post_name}\n"
-                                       f"Описание поста: {current_post_description}\n"
-                                       f"Тег поста: #{current_post_tag}\n"
-                                       f"Создатель: {current_user_name}\n"
-                                       f"Дата создания: {create_date}\n"
-                                       f"Время создания: {create_time}\n\n"
-                                       f"Вы успешно создали пост!",
+                               caption=_("create.post.successfully_created_info").
+                               format(post_title=current_post_name,
+                                      post_description=current_post_description,
+                                      post_tag=current_post_tag,
+                                      post_creator=current_user_name,
+                                      post_date_creation=create_date,
+                                      post_time_creation=create_time),
                                reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 

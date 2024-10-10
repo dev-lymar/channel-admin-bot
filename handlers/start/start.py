@@ -1,5 +1,6 @@
 from aiogram import Router, types
 from aiogram.filters import CommandStart
+from aiogram.utils.i18n import gettext as _
 
 from config.bot_config import ADMIN
 from db.db_handler.user_role.check_user_role import check_db_user_role
@@ -15,13 +16,13 @@ async def start_command(message: types.Message) -> None:
     check_user_role = await check_db_user_role(user_id=user_id)
 
     if check_user_role == 'admin' or user_id == ADMIN:
-        await message.answer(text="Вы вошли как админ",
+        await message.answer(text=_("start.admin.message"),
                              reply_markup=await admin_panel_keyboard_main_menu())
     elif check_user_role == 'content_manager':
-        await message.answer(text="Вы вошли как контент-менеджер",
+        await message.answer(text=_("start.context_manager.message"),
                              reply_markup=await content_manager_panel_keyboard_main_menu())
     else:
-        await message.answer("Вы не админ!")
+        await message.answer(_("start.denied_access.message"))
 
 
 def register_start_command(dp) -> None:

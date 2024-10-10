@@ -1,5 +1,6 @@
 from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.i18n import gettext as _
 
 from db.db_handler.change_post.get_post_name import get_post_name
 from db.db_handler.delete_post.delete_post import delete_post
@@ -14,7 +15,7 @@ async def admin_panel_delete_post_callback(callback: types.CallbackQuery, state:
     await state.set_state(Delete_post.post_id)
     await callback.message.delete()
 
-    await callback.message.answer(text="Укажите ID поста который надо удалить:",
+    await callback.message.answer(text=_("post.delete.enter_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -27,15 +28,12 @@ async def post_id(message: types.Message, state: FSMContext):
         int_post_id = int(data.get("post_id"))
         await delete_post(post_id=int_post_id)
         await state.clear()
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Название поста: {row.post_name}\n\n"
-                                  "Пост удален",
+        await message.answer(text=_("post.delete.successfully_deleted").format(post_id=message.text,
+                                                                               post_name=row.post_name),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
     except TypeError:
         await state.clear()
-        await message.answer(text=f"ID поста: {message.text}\n"
-                                  f"Ошибка. Поста с таким ID нет в базе данных!\n"
-                                  "Попробуйте еще раз.",
+        await message.answer(text=_("post.error.id_not_found").format(post_id=message.text),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
