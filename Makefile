@@ -1,4 +1,4 @@
-check:
+lint:
 	ruff check .
 	flake8 .
 
