@@ -1,9 +1,11 @@
-from aiogram import types, Router, F
+from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
-from states.user_role_actions import Delete_role_from_user
-from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
-from db.db_handler.user_role.delete_user_role import delete_user_role
+from aiogram.utils.i18n import gettext as _
+
 from db.db_handler.user_role.check_user_role import check_db_user_role
+from db.db_handler.user_role.delete_user_role import delete_user_role
+from keyboards.admin_panel_keyboard_back_to_main_menu import admin_panel_keyboard_back_to_main_menu
+from states.user_role_actions import Delete_role_from_user
 
 router = Router()
 
@@ -13,7 +15,7 @@ async def admin_panel_delete_user_role(callback: types.CallbackQuery, state=FSMC
     await state.set_state(Delete_role_from_user.user_id)
 
     await callback.message.delete()
-    await callback.message.answer(text="Кого вы хотите удалить ?\nПришлите ID пользователя",
+    await callback.message.answer(text=_("user_role.delete.get_user_id"),
                                   reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 
@@ -25,22 +27,17 @@ async def load_user_id(message: types.Message, state: FSMContext) -> None:
 
         if check == "None":
             await state.clear()
-            await message.answer(f"Пользователя с таким ID нет в базе данных!\n"
-                                 f"ID пользователя: {message.text}\n"
-                                 f"Попробуйте еще раз.\n",
+            await message.answer(text=_("user_role.error.id_not_found").format(user_id=message.text),
                                  reply_markup=await admin_panel_keyboard_back_to_main_menu())
         else:
             await delete_user_role(user_id=int_user_id)
-            await message.answer(f"Пользователь удален\n"
-                                 f"ID пользователя: {int_user_id}\n",
+            await message.answer(text=_("user_role.delete.successfully_deleted").format(user_id=int_user_id),
                                  reply_markup=await admin_panel_keyboard_back_to_main_menu())
             await state.clear()
 
     except ValueError:
         await state.clear()
-        await message.answer(f"ID пользователя должно содержать только цифры!\n"
-                             f"Вы ввели следующий ID: {message.text}\n"
-                             f"Попробуйте еще раз.\n",
+        await message.answer(text=_("user_role.error.value_error").format(user_id=message.text),
                              reply_markup=await admin_panel_keyboard_back_to_main_menu())
 
 

@@ -1,6 +1,7 @@
-from aiogram import types, Router, F
-from keyboards.admin_panel_keyboard_take_user_role import admin_panel_keyboard_take_user_role
+from aiogram import F, Router, types
+from aiogram.utils.i18n import gettext as _
 
+from keyboards.admin_panel_keyboard_take_user_role import admin_panel_keyboard_take_user_role
 
 router = Router()
 
@@ -9,7 +10,7 @@ router = Router()
 async def admin_panel_create_user_role_callback(callback: types.CallbackQuery) -> None:
     await callback.message.delete()
 
-    await callback.message.answer(text="Кого Вы хотите добавить ?",
+    await callback.message.answer(text=_("user_role.role_selection"),
                                   reply_markup=await admin_panel_keyboard_take_user_role())
 
 
