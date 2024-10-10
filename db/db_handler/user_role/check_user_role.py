@@ -1,5 +1,6 @@
-from db.models.models import User, async_session
 from sqlalchemy import select
+
+from db.models.models import User, async_session
 
 
 async def check_db_user_role(user_id: int):

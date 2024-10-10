@@ -1,5 +1,6 @@
-from db.models.models import User, async_session
 from sqlalchemy import delete
+
+from db.models.models import User, async_session
 
 
 async def delete_user_role(user_id: int):

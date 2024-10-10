@@ -1,7 +1,8 @@
-from config.bot_config import DB_URL
-from sqlalchemy.orm import Mapped, DeclarativeBase, mapped_column
 from sqlalchemy import BigInteger
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+from config.bot_config import DB_URL
 
 engine = create_async_engine(DB_URL, echo=True)
 

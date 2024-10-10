@@ -10,6 +10,8 @@
 **Admin Bot** — is a simple Telegram bot designed for managing content and users in a Telegram channel. 
 The project is built using Python 3.12.2, leveraging `aiogram`, `asyncpg`, `Babel`, and `SQLAlchemy` for interacting with a `PostgreSQL` database.
 
+![Admin Bot](./img/image.png)
+
 ## Table of Contents
  - [Key Features 🎯](#Key-Features)
  - [Installation and Setup ⚙️](#Installation-and-Setup)
@@ -25,8 +27,6 @@ The project is built using Python 3.12.2, leveraging `aiogram`, `asyncpg`, `Babe
 - Post management: view, create, edit, and delete posts.
 - Publish posts to a channel.
 - Assign and remove user roles: administrator, content manager.
-
-![Admin Bot](./img/image.png)
 
 ## Installation and Setup
 **Requirements:**
