@@ -4,6 +4,12 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 async def content_manager_panel_keyboard_main_menu() -> types.InlineKeyboardMarkup:
+    """
+    Create the main menu inline keyboard for content managers with options for post management.
+
+    Returns:
+        types.InlineKeyboardMarkup: The inline keyboard markup with options for creating, editing, deleting, and publishing posts.
+    """
     builder = InlineKeyboardBuilder()
 
     builder.row(types.InlineKeyboardButton(text=_("kb.post.create"), callback_data="create_post"))

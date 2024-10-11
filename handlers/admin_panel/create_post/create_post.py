@@ -14,6 +14,14 @@ router = Router()
 
 @router.callback_query(F.data == "create_post")
 async def admin_panel_create_post_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for creating a new post.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the create process.
+
+    """
     await state.set_state(Create_post.post_name)
     await callback.message.delete()
 
@@ -23,6 +31,14 @@ async def admin_panel_create_post_callback(callback: types.CallbackQuery, state:
 
 @router.message(Create_post.post_name)
 async def post_name(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post name for creation.
+
+    Args:
+        message (types.Message): The message containing the post name from the user.
+        state (FSMContext): The FSM context for managing the state of the create process.
+
+    """
     await state.update_data(post_name=message.html_text)
     await state.set_state(Create_post.post_description)
     await message.answer(text=_("post.create.description").format(post_title=message.html_text),
@@ -31,6 +47,14 @@ async def post_name(message: types.Message, state: FSMContext):
 
 @router.message(Create_post.post_description)
 async def post_description(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post description for creation.
+
+    Args:
+        message (types.Message): The message containing the post description from the user.
+        state (FSMContext): The FSM context for managing the state of the create process.
+
+    """
     await state.update_data(post_description=message.html_text)
     await state.set_state(Create_post.post_image)
     data = await state.get_data()
@@ -43,6 +67,14 @@ async def post_description(message: types.Message, state: FSMContext):
 
 @router.message(Create_post.post_image)
 async def post_image(message: types.Message, state: FSMContext):
+    """
+    Handle input of a post image for creation.
+
+    Args:
+        message (types.Message): The message containing the image file ID from the user.
+        state (FSMContext): The FSM context for managing the state of the create process.
+
+    """
     await state.update_data(post_image=message.photo[0].file_id)
     await state.set_state(Create_post.post_tag)
     data = await state.get_data()
@@ -55,6 +87,14 @@ async def post_image(message: types.Message, state: FSMContext):
 
 @router.message(Create_post.post_tag)
 async def post_tag(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post tag for creation and create the post.
+
+    Args:
+        message (types.Message): The message containing the post tag from the user.
+        state (FSMContext): The FSM context for managing the state of the create process.
+
+    """
     await state.update_data(post_tag=message.html_text)
     data = await state.get_data()
 

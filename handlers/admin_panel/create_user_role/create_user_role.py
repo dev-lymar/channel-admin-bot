@@ -8,6 +8,12 @@ router = Router()
 
 @router.callback_query(F.data == "make_user_role")
 async def admin_panel_create_user_role_callback(callback: types.CallbackQuery) -> None:
+    """
+    Handle callback for displaying user role selection options.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+    """
     await callback.message.delete()
 
     await callback.message.answer(text=_("user_role.role_selection"),

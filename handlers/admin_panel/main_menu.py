@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "main_menu", StateFilter("*"))
 async def admin_panel_main_menu_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for displaying the main menu based on user role.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the process.
+    """
     user_id = int(callback.from_user.id)
     check_user_role = await check_db_user_role(user_id)
     curr_state = await state.get_state()

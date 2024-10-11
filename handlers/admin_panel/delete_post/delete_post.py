@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "delete_post")
 async def admin_panel_delete_post_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for initiating the process of deleting a post.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the deletion process.
+    """
     await state.set_state(Delete_post.post_id)
     await callback.message.delete()
 
@@ -21,6 +28,13 @@ async def admin_panel_delete_post_callback(callback: types.CallbackQuery, state:
 
 @router.message(Delete_post.post_id)
 async def post_id(message: types.Message, state: FSMContext):
+    """
+    Handle input of post ID for deleting a post.
+
+    Args:
+        message (types.Message): The message containing the post ID from the user.
+        state (FSMContext): The FSM context for managing the state of the deletion process.
+    """
     try:
         row = await get_post_name(int(message.text))
         await state.update_data(post_id=message.text)

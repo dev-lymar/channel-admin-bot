@@ -12,6 +12,12 @@ router = Router()
 
 @router.message(CommandStart())
 async def start_command(message: types.Message) -> None:
+    """
+    Handle the /start command to display the appropriate menu based on user role.
+
+    Args:
+        message (types.Message): The message object containing the /start command.
+    """
     user_id = int(message.from_user.id)
     check_user_role = await check_db_user_role(user_id=user_id)
 

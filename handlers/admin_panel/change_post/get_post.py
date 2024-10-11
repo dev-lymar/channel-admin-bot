@@ -15,6 +15,14 @@ router = Router()
 
 @router.callback_query(F.data == "change_post")
 async def admin_panel_change_post_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for changing a post.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     await state.set_state(Change_post.post_id)
     await callback.message.delete()
 
@@ -24,6 +32,14 @@ async def admin_panel_change_post_callback(callback: types.CallbackQuery, state:
 
 @router.message(Change_post.post_id)
 async def post_id(message: types.Message, state: FSMContext):
+    """
+    Handle input of post ID for editing.
+
+    Args:
+        message (types.Message): The message containing the post ID from the user.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     try:
         row = await get_post_name(int(message.text))
         await state.update_data(post_id=message.text)
@@ -39,6 +55,14 @@ async def post_id(message: types.Message, state: FSMContext):
 
 @router.message(Change_post.post_name)
 async def post_name(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post name for editing.
+
+    Args:
+        message (types.Message): The message containing the new post name from the user.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     await state.update_data(post_name=message.html_text)
     await state.set_state(Change_post.post_description)
     data = await state.get_data()
@@ -51,6 +75,14 @@ async def post_name(message: types.Message, state: FSMContext):
 
 @router.message(Change_post.post_description)
 async def post_description(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post description for editing.
+
+    Args:
+        message (types.Message): The message containing the new post description from the user.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     await state.update_data(post_description=message.html_text)
     await state.set_state(Change_post.post_tag)
     data = await state.get_data()
@@ -65,6 +97,14 @@ async def post_description(message: types.Message, state: FSMContext):
 
 @router.message(Change_post.post_tag)
 async def post_tag(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post tag for editing.
+
+    Args:
+        message (types.Message): The message containing the new post tag from the user.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     await state.update_data(post_tag=message.text)
     await state.set_state(Change_post.post_image)
     data = await state.get_data()
@@ -81,6 +121,14 @@ async def post_tag(message: types.Message, state: FSMContext):
 
 @router.message(Change_post.post_image)
 async def post_image(message: types.Message, state: FSMContext):
+    """
+    Handle input of a new post image for editing and apply changes to the post.
+
+    Args:
+        message (types.Message): The message containing the new image file ID from the user.
+        state (FSMContext): The FSM context for managing the state of the change process.
+
+    """
     await state.update_data(post_image=message.photo[0].file_id)
     data = await state.get_data()
 
