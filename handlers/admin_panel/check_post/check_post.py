@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "get_all_posts")
 async def admin_panel_get_all_posts_callback(callback: types.CallbackQuery) -> None:
+    """
+    Handle callback to retrieve and display all posts.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+
+    """
     posts = await get_posts()
 
     all_posts = "\n\n".join(
@@ -31,6 +38,14 @@ async def admin_panel_get_all_posts_callback(callback: types.CallbackQuery) -> N
 
 @router.callback_query(F.data == "check_post")
 async def admin_panel_check_post_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for checking a post's details by ID.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the check process.
+
+    """
     await state.set_state(Check_post.post_id)
     await callback.message.delete()
     await callback.answer()
@@ -41,6 +56,14 @@ async def admin_panel_check_post_callback(callback: types.CallbackQuery, state: 
 
 @router.message(Check_post.post_id)
 async def post_id(message: types.Message, state: FSMContext):
+    """
+    Handle input of post ID for viewing post details.
+
+    Args:
+        message (types.Message): The message containing the post ID from the user.
+        state (FSMContext): The FSM context for managing the state of the check process.
+
+    """
     try:
         row = await get_post(int(message.text))
         post_name, post_description, post_image, post_tag = row

@@ -4,6 +4,12 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 async def admin_panel_keyboard_main_menu() -> types.InlineKeyboardMarkup:
+    """
+    Create the main menu inline keyboard for the admin panel with options for post management and user role management.
+
+    Returns:
+        types.InlineKeyboardMarkup: The inline keyboard markup with various options for managing posts and user roles.
+    """
     builder = InlineKeyboardBuilder()
 
     builder.row(types.InlineKeyboardButton(text=_("kb.post.create"), callback_data="create_post"))

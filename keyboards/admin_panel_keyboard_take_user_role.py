@@ -4,6 +4,12 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 async def admin_panel_keyboard_take_user_role() -> types.InlineKeyboardMarkup:
+    """
+    Create an inline keyboard for selecting a user role to assign in the admin panel.
+
+    Returns:
+        types.InlineKeyboardMarkup: The inline keyboard markup with options for selecting 'Admin' or 'Content Manager' roles.
+    """
     builder = InlineKeyboardBuilder()
 
     builder.row(

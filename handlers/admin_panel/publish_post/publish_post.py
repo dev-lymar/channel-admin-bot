@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "publish_post")
 async def admin_panel_publish_post_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for initiating the process of publishing a post.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the publishing process.
+    """
     await state.set_state(Publish_post.post_id)
     await callback.message.delete()
 
@@ -21,6 +28,13 @@ async def admin_panel_publish_post_callback(callback: types.CallbackQuery, state
 
 @router.message(Publish_post.post_id)
 async def post_id(message: types.Message, state: FSMContext):
+    """
+    Handle input of post ID for publishing a post.
+
+    Args:
+        message (types.Message): The message containing the post ID from the user.
+        state (FSMContext): The FSM context for managing the state of the publishing process.
+    """
     try:
         row = await get_post(int(message.text))
         post_name, post_description, post_image, post_tag = row

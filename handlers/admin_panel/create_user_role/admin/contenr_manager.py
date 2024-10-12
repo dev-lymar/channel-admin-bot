@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "take_user_role_content_manager")
 async def load_user_role_content_manager_callback(callback: types.CallbackQuery, state: FSMContext) -> None:
+    """
+    Handle callback for initiating the process of assigning the 'content_manager' role to a user.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the process.
+    """
     await state.set_state(Create_user_role_content_manager.user_id)
 
     await callback.message.delete()
@@ -21,6 +28,13 @@ async def load_user_role_content_manager_callback(callback: types.CallbackQuery,
 
 @router.message(Create_user_role_content_manager.user_id)
 async def load_user_id(message: types.Message, state: FSMContext) -> None:
+    """
+    Handle input of user ID for assigning the 'content_manager' role.
+
+    Args:
+        message (types.Message): The message containing the user ID.
+        state (FSMContext): The FSM context for managing the state of the process.
+    """
     try:
         check = await check_db_user_role(user_id=int(message.text))
 
@@ -53,6 +67,13 @@ async def load_user_id(message: types.Message, state: FSMContext) -> None:
 
 @router.message(Create_user_role_content_manager.user_name)
 async def load_user_name(message: types.Message, state: FSMContext) -> None:
+    """
+    Handle input of a username for assigning the 'content_manager' role.
+
+    Args:
+        message (types.Message): The message containing the username.
+        state (FSMContext): The FSM context for managing the state of the process.
+    """
     data = await state.get_data()
     int_data_user_id = int(data.get('user_id'))
     res = message.text.isdigit()

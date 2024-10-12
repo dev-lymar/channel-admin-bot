@@ -12,6 +12,13 @@ router = Router()
 
 @router.callback_query(F.data == "delete_user_role")
 async def admin_panel_delete_user_role(callback: types.CallbackQuery, state=FSMContext) -> None:
+    """
+    Handle callback for initiating the process of deleting a user role.
+
+    Args:
+        callback (types.CallbackQuery): The callback query object from the user interaction.
+        state (FSMContext): The FSM context for managing the state of the deletion process.
+    """
     await state.set_state(Delete_role_from_user.user_id)
 
     await callback.message.delete()
@@ -21,6 +28,13 @@ async def admin_panel_delete_user_role(callback: types.CallbackQuery, state=FSMC
 
 @router.message(Delete_role_from_user.user_id)
 async def load_user_id(message: types.Message, state: FSMContext) -> None:
+    """
+    Handle input of user ID for deleting a user role.
+
+    Args:
+        message (types.Message): The message containing the user ID.
+        state (FSMContext): The FSM context for managing the state of the deletion process.
+    """
     try:
         check = await check_db_user_role(user_id=int(message.text))
         int_user_id = int(message.text)
